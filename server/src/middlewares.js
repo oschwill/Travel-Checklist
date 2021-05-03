@@ -13,7 +13,17 @@ const errorHandler = (error, req, res, next) => {
   });
 };
 
+const contentSecurityPolicy = (req, res, next) => {
+  res.setHeader(
+    'content-security-policy-report-only',
+    "default-src 'self'; img-src 'self'"
+  );
+  // res.header('Content-Security-Policy', 'img-src' 'self');
+  next();
+};
+
 module.exports = {
   notFound,
   errorHandler,
+  contentSecurityPolicy,
 };

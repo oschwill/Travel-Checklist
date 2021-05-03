@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "helmet": "^4.5.0",
     "mongoose": "^5.12.7",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "xss-clean": "^0.1.1"
   }
 }
