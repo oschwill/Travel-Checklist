@@ -2,8 +2,18 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
+const mongoose = require('mongoose'); // mongodb object modeling
+
+// Middlewares
+const middlewares = require('./middlewares');
 
 const app = express();
+
+// Datenbank Connection
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+});
+
 app.use(morgan('common'));
 app.use(helmet());
 app.use(
@@ -19,21 +29,10 @@ app.get('/', (req, res) => {
 });
 
 /* Page not Found */
-app.use((req, res, next) => {
-  const error = new Error(`Page Not Found - ${req.originalUrl}`);
-  res.status(404);
-  next(error); // Wir springen direkt zur nächsten Middleware => zur Error Handling Middleware
-});
+app.use(middlewares.notFound);
 
 /* Error Middleware */
-app.use((error, req, res, next) => {
-  const statusCode = res.statusCode == 200 ? 500 : res.statusCode;
-  res.status(statusCode);
-  res.json({
-    message: error.message,
-    stack: process.env.NODE_ENV === 'production' ? '' : error.stack,
-  });
-});
+app.use(middlewares.errorHandler);
 
 const port = process.env.PORT || 1337;
 app.listen(port, () => {
