@@ -9,5 +9,74 @@ body {
 }
 
 .marker {
-  stroke: #ff0400;
+  transform: translate(-50%, -100%);
+}
+
+.marker.green {
+  fill: #007a00;
+  stroke: #007a00;
+}
+
+.marker.red {
+  fill: #be0000;
+  stroke: #be0000;
+}
+
+.popup {
+  width: 40vw;
+  padding: 0.5rem;
+}
+
+.popup img {
+  width: 100%;
+}
+
+/* LogEntryForm */
+.entry-form {
+  border: 1px solid black;
+  /* width: 90%; */
+  background-color: whitesmoke;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.entry-form label {
+  display: block;
+  font-size: 1rem;
+  color: darkslategrey;
+  padding-left: 3px;
+}
+
+input,
+textarea {
+  width: 100%;
+  font-size: 1.1em;
+  padding: 4px;
+  font-family: inherit;
+  font-weight: lighter;
+  border-radius: 0.3em;
+
+  border: 1px solid rgb(116, 113, 113);
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid orange;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5% 0;
+}
+
+.error {
+  color: #be0000;
 }
