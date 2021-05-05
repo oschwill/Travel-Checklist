@@ -1,2 +1,2 @@
 # Travel-Checklist
-listet Orte auf der Karte die man bereits besucht hat
+speichert und listet Orte auf der Karte die man bereits besucht hat
