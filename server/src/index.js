@@ -49,12 +49,6 @@ app.use(express.json());
 // Data sanitisation against XSS => escaped unter anderem code und html tags
 app.use(xss());
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Hallo Welt',
-  });
-});
-
 /* ROUTING */
 app.use('/api/logs', logs);
 
