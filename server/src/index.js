@@ -21,12 +21,21 @@ const app = express();
 app.use(middlewares.contentSecurityPolicy);
 
 // Datenbank Connection
-mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('DB connection successfull'));
+if (process.NODE_ENV === 'development') {
+  mongoose
+    .connect(process.env.DATABASE_URL_LOCAL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log('local DB connection successfull'));
+} else if (process.NODE_ENV === 'production') {
+  mongoose
+    .connect(process.env.DATABASE_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log('live DB connection successfull'));
+}
 
 app.use(morgan('common'));
 app.use(helmet());
